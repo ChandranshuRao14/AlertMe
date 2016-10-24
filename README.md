@@ -1,13 +1,15 @@
 # alertme
-alertme is a Python-based command-line tool that allows developers to get email notifcations of their scripts that are running. Simply use the command alertme along with your script, login to your gmail, and alertme will take care of the rest.
+alertme is a Python-based command-line tool that allows developers to get gmail notifcations of their scripts that are running. Simply use the command alertme along with your script, login to your gmail, and alertme will take care of the rest.
 
 ## Usage
 alertme is installed via PyPI. To install alertme simply:
+```
     pip install alertme
-    
+```    
 To use alertme with a script:
+```
     alertme myScript.py
-
+```
 Currently alertme only works with bash and python scripts. For more information about this read the options below.
 
 ## Options
@@ -15,34 +17,36 @@ alertme comes with some built-in options
 
 ### Bash
 The [-b ] option sets the script type as a bash script. The default script type for alertme is python.
-    alertme myScript.sh -b
-    
+```
+alertme myScript.sh -b
+```    
 ### Subject
 Option [-s] allows the user to input the Subject of the email notification that will be sent to the user.
-    alertme myScript.py -s
-    
+```
+alertme myScript.py -s
+```    
 ### Output
 The output option [-o] redirects myScript's STDOUT to a file. If myScript contains an error, the STDERR will be outputted to a file as well.
-    alertme myScript.py -o
+```
+alertme myScript.py -o
+```    
+STDOUT will be outputted to myScript.py.AlertMe.out.txt
     
-STDOUT will be outputted to a file:
-    myScript.py.AlertMe.out.txt
-    
-STDERR will be outputted to a file:
-    myScript.py.AlertMe.err.txt
+STDERR will be outputted to myScript.py.AlertMe.err.txt
 
 If myScript has/throws an error, both the out.txt and the err.txt files will be attached to the notification email. Otherwise just the output file will be attached.
 
 The output option also works with bash as well.
-    alertme myScript.sh -b -o
-
+```
+alertme myScript.sh -b -o
+```
 ## Troubleshooting
 For alertme to work properly:
-* myScript must be in the current working directory
+* myScript must be in the **current working directory**
 * myScript must have a .py or .sh extension. A .sh extension must accompanied with the [-b] option 
 * A gmail account must be used (requires you to login with gmail password)
 
-In gmail: "Allow access to less secure apps" must be turned on
+**In your Gmail Account: "Allow access to less secure apps" must be turned on**
 
 ## Issues
 alertme is still in very early stages of development and therefore many bugs or issues may occur. Known issues that need to be fixed include:
