@@ -1,4 +1,4 @@
-import sys, traceback, getpass, smtplib, argparse, importlib, subprocess
+import sys, traceback, smtplib, argparse, importlib, subprocess
 from email.mime.text import MIMEText
 from email.MIMEMultipart import MIMEMultipart
 from datetime import datetime
@@ -34,13 +34,11 @@ elif not commandLineArgs.bash:
 	if executeFile.startswith("./"):
 		executeFile = executeFile[2:]
 
-#Get Gmail Information
-fromaddr = raw_input("Enter your gmail address: ")
-fromaddr = fromaddr.strip()
-while not fromaddr.endswith('@gmail.com'):
-	fromaddr = raw_input("Please enter a valid Gmail address: ")
-	fromaddr = fromaddr.strip()
-psswd = getpass.getpass("Password: ")
+#Get Gmail Toaddr, fromaddr given by Jawad's script account
+toaddr = raw_input("Enter your gmail address: ")
+toaddr = toaddr.strip()
+fromaddr = 'script.info1@gmail.com'
+psswd = 'info4script'
 
 #If -s option is given
 if commandLineArgs.subject:
@@ -50,7 +48,7 @@ else: sub = "Your " + executeFile + " script from AlertMe"
 #Create message
 message = MIMEMultipart()
 message['From'] = fromaddr
-message['To'] = fromaddr #Currently the script will send an email from your own account
+message['To'] = toaddr
 message['Subject'] = sub
 server = smtplib.SMTP('smtp.gmail.com',587)
 server.starttls()
@@ -58,9 +56,8 @@ server.starttls()
 #Login to server with the given credentials
 try:
 	server.login(fromaddr,psswd)
-	print("Logged in successfully!")
 except Exception:
-	print("Login failed. Please check your username or password")
+	print("Login failed.")
 	server.quit()
 	sys.exit(0)
 
@@ -94,21 +91,6 @@ if pythonOrBash == "bash":
 else:
 	try:
 		#Check for file output option
-		'''if commandLineArgs.output:
-			with open(executeFile + ".AlertMe.out.txt","w") as outfile:
-				outfile.write("AlertMe: Script started on: " + str(datetime.today()) + " at " + str(datetime.now().time()) + "\n\n")
-				try:
-					outfile.write(subprocess.check_output(["python", executeFile],stderr=subprocess.STDOUT))
-				except subprocess.CalledProcessError as e:
-					outfile.write(e.output)
-					err = "out"
-		else:
-			if executeFile.endswith(".py"):
-				executeFile = executeFile[:-3]
-			try:
-				module = __import__(executeFile)
-			except Exception as e:
-				err = str(e)'''
 		if commandLineArgs.output:
 			with open(executeFile + ".AlertMe.out.txt","w") as outfile:
 				outfile.write("AlertMe: Script started on: " + str(datetime.today()) + " at " + str(datetime.now().time()) + "\n\n")
@@ -167,8 +149,8 @@ text = message.as_string()
 
 #Send the email
 try:
-	server.sendmail(fromaddr, fromaddr, text)
-	print("Email sent successfully")
+	server.sendmail(fromaddr, toaddr, text)
+	print("Email sent successfully to " + toaddr)
 except Exception:
 	print("Email could not be sent")
 	server.quit()
