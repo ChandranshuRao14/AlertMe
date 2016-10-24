@@ -4,11 +4,11 @@ alertme is a Python-based command-line tool that allows developers to get gmail 
 ## Usage
 alertme is installed via PyPI. To install alertme simply:
 ```
-    pip install alertme
+pip install alertme
 ```    
 To use alertme with a script:
 ```
-    alertme myScript.py
+alertme myScript.py
 ```
 Currently alertme only works with bash and python scripts. For more information about this read the options below.
 
