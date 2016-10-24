@@ -1,5 +1,5 @@
 # alertme
-alertme is a Python-based command-line tool that allows developers to get gmail notifcations of their scripts that are running. Simply use the command alertme along with your script, login to your gmail, and alertme will take care of the rest.
+alertme is a Python-based command-line tool that allows developers to get gmail notifcations of their scripts that are running. Simply use the command alertme along with your script, type in your email, and alertme will take care of the rest.
 
 ## Usage
 alertme is installed via PyPI. To install alertme simply:
@@ -44,15 +44,10 @@ alertme myScript.sh -b -o
 For alertme to work properly:
 * myScript must be in the **current working directory**
 * myScript must have a .py or .sh extension. A .sh extension must accompanied with the [-b] option 
-* A gmail account must be used (requires you to login with gmail password)
-
-**In your Gmail Account: "Allow access to less secure apps" must be turned on**
 
 ## Issues
 alertme is still in very early stages of development and therefore many bugs or issues may occur. Known issues that need to be fixed include:
 * myScript must be in the current working directory
-* Only gmail is supported at this time
-* As of now alertme uses the user's email to send them an email notifcation. Kinda like you're emailing yourself. In a future release alertme will send from a bot gmail account to your mail so that login is not necessary.
 * alertme cannot attach large output files to emails. Unfortunately there doesn't seem to be a workaround this.
 
 ## Contributing
