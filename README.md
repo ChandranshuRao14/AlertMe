@@ -18,17 +18,17 @@ alertme comes with some built-in options
 ### Bash
 The [-b ] option sets the script type as a bash script. The default script type for alertme is python.
 ```
-alertme myScript.sh -b
+alertme -b myScript.sh
 ```    
 ### Subject
 Option [-s] allows the user to input the Subject of the email notification that will be sent to the user.
 ```
-alertme myScript.py -s
+alertme -s myScript.py
 ```    
 ### Output
 The output option [-o] redirects myScript's STDOUT to a file. If myScript contains an error, the STDERR will be outputted to a file as well.
 ```
-alertme myScript.py -o
+alertme -o myScript.py
 ```    
 STDOUT will be outputted to myScript.py.AlertMe.out.txt
     
@@ -38,7 +38,7 @@ If myScript has/throws an error, both the out.txt and the err.txt files will be 
 
 The output option also works with bash as well.
 ```
-alertme myScript.sh -b -o
+alertme -b -o myScript.sh
 ```
 ## Troubleshooting
 For alertme to work properly:
