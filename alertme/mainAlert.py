@@ -38,7 +38,7 @@ elif not commandLineArgs.bash:
 toaddr = raw_input("Enter your gmail address: ")
 toaddr = toaddr.strip()
 fromaddr = 'script.info1@gmail.com'
-psswd = 'info4script'
+psswd = '****'
 
 #If -s option is given
 if commandLineArgs.subject:
